@@ -8,14 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.List;
 
 @Data
-@Accessors(chain = true)
 @Entity
+@Table(name = "`user`")
+@Accessors(chain = true)
 public class User {
 
     @Id
@@ -25,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,

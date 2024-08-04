@@ -3,8 +3,9 @@ package com.aop.app.service;
 import com.aop.app.model.User;
 import com.aop.app.repository.UserRepository;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
 
-@Order
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
@@ -13,8 +14,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) {
-        userRepository.save(user);
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
-
 }

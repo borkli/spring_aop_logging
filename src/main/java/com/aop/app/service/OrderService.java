@@ -1,11 +1,14 @@
 package com.aop.app.service;
 
+import com.aop.app.exception.ApplicationException;
 import com.aop.app.model.Order;
 import com.aop.app.model.User;
 import com.aop.app.repository.OrderRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -14,12 +17,12 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void createOrder(Order order, User user) {
+    public Order createOrder(Order order, User user) {
         if (order.getUser() == null) {
             order.setUser(user);
         } else if (!Objects.equals(user.getId(), order.getUser().getId())) {
-            throw new RuntimeException("invalid order");
+            throw new ApplicationException("Invalid order");
         }
-        orderRepository.save(order);
+        return orderRepository.save(order);
     }
 }
