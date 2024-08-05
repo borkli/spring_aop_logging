@@ -1,16 +1,12 @@
 package com.aop.app.aspect;
 
 import com.aop.app.exception.ApplicationException;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
-@Slf4j
+@Log4j2
 @Aspect
 @Component
 public class LoggingAspect {
@@ -22,7 +18,7 @@ public class LoggingAspect {
     public void beforeLog(JoinPoint joinpoint) {
         log.info(
             "Entering {} with args {}",
-            joinpoint.getSignature().getName(),  //todo
+            joinpoint.getSignature().toShortString(),  //todo
             joinpoint.getArgs()
         );
     }

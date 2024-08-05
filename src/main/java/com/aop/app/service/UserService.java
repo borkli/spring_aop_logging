@@ -1,8 +1,8 @@
 package com.aop.app.service;
 
+import com.aop.app.exception.ApplicationException;
 import com.aop.app.model.User;
 import com.aop.app.repository.UserRepository;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +15,10 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        return userRepository.save(user);
+        try {
+            return userRepository.save(user);
+        } catch (Exception ex) {
+            throw new ApplicationException(ex.getCause());
+        }
     }
 }
