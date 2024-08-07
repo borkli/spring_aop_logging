@@ -4,11 +4,13 @@ import com.aop.app.exception.ApplicationException;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Log4j2
 @Aspect
 @Component
+@Order(1)
 public class LoggingAspect {
 
     @Pointcut("within(com.aop.app.service.*)")
@@ -31,8 +33,8 @@ public class LoggingAspect {
         );
     }
 
-    @AfterThrowing("allServices()")
-    public void afterThrowingLog(ApplicationException ex) {
-        log.error("Exception: ", ex);
-    }
+//    @AfterThrowing("allServices()")
+//    public void afterThrowingLog(ApplicationException ex) {
+//        log.error("Exception: ", ex);
+//    }
 }

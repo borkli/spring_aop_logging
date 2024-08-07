@@ -15,10 +15,6 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        try {
-            return userRepository.save(user);
-        } catch (Exception ex) {
-            throw new ApplicationException(ex.getCause());
-        }
+        return userRepository.saveAndFlush(user);
     }
 }

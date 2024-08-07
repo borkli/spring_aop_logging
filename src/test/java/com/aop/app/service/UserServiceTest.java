@@ -17,11 +17,10 @@ public class UserServiceTest  {
 
     @Test
     void testCreateUser() {
-        User user = userService.createUser(
-            new User()
-                .setName("user")
-                .setEmail("test@email.ru")
-        );
+        User user = new User()
+            .setName("user")
+            .setEmail("test@email.ru");
+        user = userService.createUser(user);
         Assertions.assertNotNull(user);
         Assertions.assertNotNull(user.getId());
     }
