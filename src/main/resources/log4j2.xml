@@ -13,5 +13,9 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>
+        <Logger level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="TestAppender"/>
+        </Logger>
     </Loggers>
 </Configuration>
