@@ -1,6 +1,5 @@
 package com.aop.app.service;
 
-import com.aop.app.exception.ApplicationException;
 import com.aop.app.model.User;
 import com.aop.app.repository.UserRepository;
 import org.springframework.stereotype.Service;
