@@ -1,5 +1,6 @@
 package com.aop.app.service;
 
+import com.aop.app.dto.UserDto;
 import com.aop.app.model.User;
 import com.aop.app.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user) {
-        return userRepository.saveAndFlush(user);
+    public UserDto createUser(User user) {
+        return new UserDto(userRepository.saveAndFlush(user));
     }
 }

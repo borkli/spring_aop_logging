@@ -1,5 +1,6 @@
 package com.aop.app.controller;
 
+import com.aop.app.dto.UserDto;
 import com.aop.app.model.User;
 import com.aop.app.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping("create")
-    public User createUser(@RequestBody User user) {
+    public UserDto createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 }

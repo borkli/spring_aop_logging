@@ -9,6 +9,10 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * Логирует название вызываемого методе, аргументы и возвращаемый результат
+ * во всех классах пакета <em>com.aop.app.service</em>
+ */
 @Log4j2
 @Aspect
 @Component
@@ -34,9 +38,4 @@ public class LoggingAspect {
             joinPoint.getSignature().toShortString(), result
         );
     }
-
-//    @AfterThrowing("allServices()")
-//    public void afterThrowingLog(ApplicationException ex) {
-//        log.error("Exception: ", ex);
-//    }
 }

@@ -14,6 +14,13 @@ import org.springframework.stereotype.Component;
 @Order(2)
 public class ExceptionHandlingAspect {
 
+    /**
+     * Оборачивает выбрасываемое исключение в {@link ApplicationException} и логирует
+     * <p>Используется в каждом классе поката <em>com.aop.app.service</em>
+     * @param joinPoint выполняемый процесс
+     * @return the result of proceeding
+     * @throws ApplicationException ошибка приложения
+     */
     @Around("within(com.aop.app.service.*)")
     public Object serviceException(ProceedingJoinPoint joinPoint) {
         try {
